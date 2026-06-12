@@ -16,6 +16,14 @@ Nginx web server
 DNS configuration
 Remote server management 
 
+# Steps to create the server from scartch
+Azure setup
+DNS
+NGINX
+Website editing 
+WireGuard configuring
+Firewall
+
 DNS Name: www.stephen.it.com
 Public IP: 20.70.160.219
 Stephen Yugu Modi 
