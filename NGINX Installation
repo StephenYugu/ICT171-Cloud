@@ -1,0 +1,11 @@
+# NIGNX Installisation
+To install nginx it will be quite simple enter these codes
+sudo apt update
+sudo apt install nginx -y
+# Start the service 
+sudo systemctl start nginx
+sudo systemctl enable nginx
+# Verify 
+Now to verify enter nginx working enter this
+sudo systemctl status nginx
+what you should expect to see is nginx giving the result of active(running)
