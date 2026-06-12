@@ -29,8 +29,12 @@ WireGuard configuring
 
 Firewall
 
+# Author
+
 DNS Name: www.stephen.it.com
+
 Public IP: 20.70.160.219
+
 Stephen Yugu Modi 
 35393323
 
