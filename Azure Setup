@@ -1,0 +1,14 @@
+# Azure Setup
+Creating your VM is quite simple first search up Microsoft Azure and log into your account. 
+Then Select Virtual machines.
+Click create after that make sure you choose to Ubuntu Server 24.04LTS.
+Then select the virtual size that is meant for your requirements.
+After that is all done enable your SSH authentication.
+
+# Connect to your SSH
+Copy your ssh and put it somewhere safe it should look something like this.
+ssh -i YourKeyName.pem User@YourwebserverIP
+# Updating
+Now open Powershell and update your system using these codes
+sudo apt update
+sudo apt upgrade -y
