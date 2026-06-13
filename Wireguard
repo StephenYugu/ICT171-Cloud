@@ -1,0 +1,68 @@
+# Configuring WireGuard 
+Now first what you will have to do is download wireguard on your device then head into your ssh.
+Once your in your ssh enter these code to install it into your webserver.
+sudo apt update
+sudo apt install wireguard -y
+Now to verify you installation enter this code
+wg --version
+# The VPN server keys
+With WireGuard your going to have the keys they generate for them to work to get them your going to have to navigate to the wireguard directory:
+Enter these code
+cd /etc/wireguard
+Now to generate the private key
+wg genkey | sudo tee server_private.key
+To generate the public key
+sudo cat server_private.key | wg pubkey | sudo tee server_public.key
+They to display both these keys enter this code
+sudo cat server_private.key
+sudo cat server_public.key
+Save these codes into a safe place that is accessible.
+# Using the WireGuard interface
+To create a configuring file in your webserver enter this code
+sudo nano /etc/wireguard/wg0.conf
+add these configuration 
+[Interface] 
+Address = 10.0.0.1/24 
+ListenPort = 51820 
+PrivateKey = server_private_key 
+
+SaveConfig = true
+
+Change the server_private_key with your actual key.
+# Enabling your IP
+Now open your ssh and enter this code
+sudo nano /etc/sysctl.conf
+find #net.ipv4.ip_forward=1 and remove #
+To apply changes enter
+sudo sysctl - p
+# Starting WireGuard 
+To start wireguard on your webserver enter
+sudo systemctl enable wg-quick@wg0
+sudo systecmctl start wg-quick@wg0
+sudo systemctl status wg-quick@wg0
+What you should expect to see is active(running)
+
+# Double check VPN interface
+To check your interface enter this code
+sudo wg 
+You should see what you entered in when you intially added the code to your interface.
+
+# Firewall
+To config your firewall your going to have to open your virtual machine on mircosoft and then select networking and create an inbound security rule it may already be done but just to make sure put this code in.
+Protocol     UDP
+Port         51820
+Action       allow
+These might already be done so if it is leave as is.
+
+# Client configuration 
+[Interface]
+PrivateKey = client_private_key 
+Address = 10.0.0.2/24 
+[Peer] 
+PublicKey = server_public_key 
+Endpoint = your_domain_:51820 
+AllowedIPs = 0.0.0.0/0 
+PersistentKeepalive = 25
+# Checking the IP
+Now all you have to do is to ping your ip and check if it replies correctly and everything is working.
+
