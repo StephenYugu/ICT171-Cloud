@@ -1,0 +1,9 @@
+# Getting your DNS
+Search namecheap.com to find your name for your website, once your on the website choose a name that is within your price range.
+Once the payment is done click the little drop down to the right top of the page then go onto account.
+Go all the way to the bottom of the page and you should see an option to manage your website name.
+To your left your going to see an option that says domain list.
+Find your DNS and select manage after that you will have the option to do many things what you wanna do is select advanced DNS.
+Now create a new record and make sure its an A type record and enter all the neccessary information that is needed.
+Make sure you make two records one for "www" and one for "@".
+After all this check your website to see if it was successful or not.
